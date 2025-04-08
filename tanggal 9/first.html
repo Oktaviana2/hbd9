@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8e8e8;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            z-index: 999;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .love {
+            position: absolute;
+            color: pink;
+            font-size: 30px;
+            animation: floatUp 4s infinite;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px);
+                opacity: 0;
+            }
+        }
+        
+        .content {
+            text-align: center;
+        }
+        
+        .message {
+            margin-top: 20px;
+            display: none;
+            color: #ff69b4;
+            font-size: 24px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        
+        img {
+            width: 150px;
+            height: auto;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="popup" id="popup">
+        <img src="notif.jpeg" alt="Ucapan">
+        <p>Do u love me?</p>
+        <button onclick="yes()" id="yesBtn">Yes</button>
+        <button onclick="no()" id="noBtn">No</button>
+    </div>
+
+    <div class="content hidden" id="content">
+        <h1 id="happy">Happy Birthday Rizky yoga kurnia putra</h1>
+        <p>Semoga selalu bahagia dan panjang umur</p>
+        <button onclick="showMessage()">Pencet</button>
+
+        <div class="message" id="message">
+            <p> Selamat ulang tahun ya... Aku harap di umur kamu yang baru ini, semua hal baik selalu nyertain kamu. Tetap jadi diri kamu yang ceria, kuat, dan hebat kayak biasanya. Maaf kalo selama ini aku banyak kurangnya. Aku tau aku bukan orang yang sempurna,
+                aku banyak salah, banyak nyakitin mungkin tanpa sadar. Tapi satu hal yang selalu sama... aku pernah sayang kamu sepenuh hati. Aku nggak pernah nyesel pernah kenal kamu, pernah deket sama kamu, pernah jadi seseorang yang mungkin sempat
+                kamu jaga juga. Tapi mungkin sekarang... aku bukan lagi tempat kamu pulang. Aku bukan lagi orang yang kamu cari saat kamu butuh sandaran. Dan itu nggak apa-apa, karena aku selalu doain kamu biar dapet seseorang yang jauh lebih baik dari
+                aku. Seseorang yang bisa jagain kamu lebih tulus, lebih sabar, dan lebih sayang dari aku. Mungkin setelah kamu baca surat ini, kamu gabisa nemuin aku di mana-mana lagi. Tapi aku bakal selalu doain kamu dari jauh... biar kamu bahagia dengan
+                cara kamu sendiri. Thank you for everything... thank you for every moment we’ve shared. I hope you’ll find someone better than me... And remember... I loved u.
+
+            </p>
+            <img src="foto1.jpeg" alt="Foto 1">
+            <img src="foto2.jpg" alt="Foto 2">
+        </div>
+    </div>
+
+    <script>
+        const popup = document.getElementById('popup');
+        const content = document.getElementById('content');
+        const noBtn = document.getElementById('noBtn');
+        const happy = document.getElementById('happy');
+        const colors = ['yellow', 'maroon', 'lightblue', 'purple'];
+        let i = 0;
+
+        function yes() {
+            popup.classList.add('hidden');
+            content.classList.remove('hidden');
+            createLoves();
+        }
+
+        function no() {
+            noBtn.remove();
+        }
+
+        function createLoves() {
+            setInterval(() => {
+                const love = document.createElement('div');
+                love.classList.add('love');
+                love.style.left = Math.random() * 100 + 'vw';
+                love.innerHTML = '❤';
+                document.body.appendChild(love);
+                setTimeout(() => love.remove(), 4000);
+            }, 300);
+
+            setInterval(() => {
+                happy.style.color = colors[i];
+                i = (i + 1) % colors.length;
+            }, 2000);
+        }
+
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+        }
+
+        setTimeout(() => {
+            popup.classList.remove('hidden');
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
+</script>
+
+</body>
